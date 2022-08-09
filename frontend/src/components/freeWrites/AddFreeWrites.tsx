@@ -85,7 +85,13 @@ function AddFreeWrites({ ...props }) {
 
   return (
     <Center height={"fit-content"}>
-      <Card sx={{ padding: "8px", margin: "8px", width: "50vw" }}>
+      <Card
+        sx={{
+          padding: "8px",
+          margin: "8px",
+          width: { xs: "80vw", md: "50vw" },
+        }}
+      >
         <Stack style={{ width: "100%" }} spacing={1}>
           <Stack
             direction={{ xs: "column", md: "row" }}

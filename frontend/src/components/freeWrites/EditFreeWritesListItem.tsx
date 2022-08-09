@@ -1,6 +1,6 @@
 import { FreeWrite } from "../../types/types";
 import FreeWrites from "../../models/FreeWrites";
-import { Box, Button, Card, Stack, TextField } from "@mui/material";
+import { Box, Button, Card, Stack, TextField, Tooltip } from "@mui/material";
 
 import { useEffect, useState } from "react";
 import { EventBus } from "../../event-bus/event-bus";
@@ -44,6 +44,9 @@ function EditFreeWritesListItem({ freeWrite }: { freeWrite: FreeWrite }) {
           <Stack sx={{ width: { sm: "100%", md: "500px" } }} spacing={1}>
             <TextField
               id="text"
+              style={{ textAlign: "left" }}
+              multiline
+              minRows={4}
               value={formik.values.text}
               onChange={formik.handleChange}
               error={formik.touched.text && Boolean(formik.errors.text)}
@@ -57,14 +60,16 @@ function EditFreeWritesListItem({ freeWrite }: { freeWrite: FreeWrite }) {
               variant={"outlined"}
             />
           </Stack>
-          <Button
-            type="submit"
-            variant="contained"
-            sx={{ height: "32px" }}
-            onClick={() => formik.handleSubmit()}
-          >
-            <SaveIcon />
-          </Button>
+          <Tooltip title="Save">
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{ height: "32px" }}
+              onClick={() => formik.handleSubmit()}
+            >
+              <SaveIcon />
+            </Button>
+          </Tooltip>
         </Box>
       </Stack>
     </Card>
